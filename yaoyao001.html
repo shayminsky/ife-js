@@ -1,0 +1,49 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>yaoyao001</title>
+    <style type="text/css">
+#info{
+  color:grey;
+  font-size:12px;
+  margin-left:50px;
+}
+
+</style>
+  </head>
+<body>
+
+<form onsubmit="return validate_required(name)">
+    名称: <input type="text" name="name" size="16">
+    <input type="submit" value="验证">
+</form>
+<span id=info>必填，长度为4-16个字符</span>
+
+
+<script type="text/javascript">
+    $ = function (el) { return document.querySelector(el); };
+    function validate_required(field){
+        with (field){
+            var temple=value.replace(/[^x00-xff]/g,'AB');
+            var tlen=temple.length;
+            if (value==null||value==""){
+                $("#info").innerHTML="姓名不能为空";
+                $("#info").style.color="red";
+                return false;
+            }
+            else if(tlen<4||tlen>16){
+                $("#info").innerHTML="请输入4-16个字符";
+                $("#info").style.color="red";
+                return false;
+            }
+            else {
+                $("#info").innerHTML="名称格式正确";
+                $("#info").style.color="green";
+                return false;
+            }
+        }
+    }
+</script>
+</body>
+</html>
